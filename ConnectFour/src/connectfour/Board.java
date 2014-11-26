@@ -84,5 +84,9 @@ public class Board {
 		}
 		return board[row];
 	}
+	
+	public boolean isValid(int col) {
+		return (board[rows-1][col]==0);
+	}
 
 }

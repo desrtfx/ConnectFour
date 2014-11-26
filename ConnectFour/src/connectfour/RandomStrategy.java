@@ -1,11 +1,18 @@
 package connectfour;
 
+import java.util.Random;
+
 public class RandomStrategy implements MoveStrategy {
 
+	Random rnd = new Random();
+	
 	@Override
 	public int makeMove(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
+		int col;
+		do {
+			col = rnd.nextInt(board.getCols());
+		} while (!board.isValid(col));
+		return col;
 	}
 
 }
