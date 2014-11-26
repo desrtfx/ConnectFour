@@ -3,6 +3,7 @@ package connectfour.strategy;
 import java.util.Random;
 
 import connectfour.assets.Board;
+import connectfour.assets.Player;
 
 public class FollowStrategy implements MoveStrategy {
 
@@ -10,7 +11,7 @@ public class FollowStrategy implements MoveStrategy {
 	private Random rnd;
 
 	@Override
-	public int makeMove(Board board) {
+	public int makeMove(Player player, Board board) {
 		int col = 0;
 		if (oldBoard != null) {
 			// not the first move for the computer player
