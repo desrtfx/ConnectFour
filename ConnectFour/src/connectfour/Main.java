@@ -3,7 +3,10 @@ package connectfour;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Board board = new Board();
+		TxtGUI gui=new TxtGUI(board);
+		
+		gui.drawBoard();
 
 	}
 
