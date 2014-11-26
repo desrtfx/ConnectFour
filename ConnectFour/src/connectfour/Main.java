@@ -7,6 +7,8 @@ public class Main {
 		TxtGUI gui=new TxtGUI(board);
 		
 		gui.drawBoard();
+		
+		
 
 	}
 
