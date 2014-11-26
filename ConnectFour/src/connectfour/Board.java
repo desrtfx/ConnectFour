@@ -6,8 +6,8 @@ public class Board {
 	private int[][] board;
 
 	// Board dimensions for easy access
-	private int rows;
-	private int cols;
+	private final int rows;
+	private final int cols;
 
 	public Board() {
 		this(6, 7);
@@ -17,6 +17,17 @@ public class Board {
 		this.rows = rows;
 		this.cols = cols;
 		board = new int[this.rows][this.cols];
+	}
+
+	public Board(Board board) {
+		this.rows = board.getRows();
+		this.cols = board.getCols();
+		this.board = new int[this.rows][this.cols];
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < cols; col++) {
+				this.board[row][col] = board.getValueAt(row, col);
+			}
+		}
 	}
 
 	public int[][] getBoard() {
@@ -34,7 +45,11 @@ public class Board {
 		}
 		return board[row][col];
 	}
-	
+
+	public int getVauleAt(Cell cell) {
+		return getValueAt(cell.getRow(), cell.getCol());
+	}
+
 	public void setValueAt(int row, int col, int value) {
 		if ((row < 0) || (row >= rows)) {
 			throw new IndexOutOfBoundsException(
@@ -50,14 +65,18 @@ public class Board {
 		board[row][col] = value;
 	}
 
+	public void setValueAt(Cell cell, int value) {
+		setValueAt(cell.getRow(), cell.getCol(), value);
+	}
+
 	public int getCols() {
 		return cols;
 	}
-	
+
 	public int getRows() {
 		return rows;
 	}
-	
+
 	public int[] getRow(int row) {
 		if ((row < 0) || (row >= rows)) {
 			throw new IndexOutOfBoundsException(
@@ -65,6 +84,5 @@ public class Board {
 		}
 		return board[row];
 	}
-	
-	
+
 }

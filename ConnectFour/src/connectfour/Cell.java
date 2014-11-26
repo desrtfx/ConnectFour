@@ -13,6 +13,11 @@ public class Cell {
 		this.col = col;
 	}
 	
+	public Cell(Cell cell) {
+		this.row = cell.getRow();
+		this.col = cell.getCol();
+	}
+	
 	public int getRow() {
 		return row;
 	}
