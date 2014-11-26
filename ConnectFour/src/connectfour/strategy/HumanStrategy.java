@@ -1,4 +1,6 @@
-package connectfour;
+package connectfour.strategy;
+
+import connectfour.assets.Board;
 
 public class HumanStrategy implements MoveStrategy {
 

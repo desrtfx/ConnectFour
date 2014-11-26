@@ -1,4 +1,4 @@
-package connectfour;
+package connectfour.assets;
 
 public class Cell {
 	private int row;

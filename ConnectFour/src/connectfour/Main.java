@@ -2,6 +2,9 @@ package connectfour;
 
 import java.util.Random;
 
+import connectfour.assets.Board;
+import connectfour.gui.TxtGUI;
+
 public class Main {
 
 	public static void main(String[] args) {

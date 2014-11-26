@@ -1,4 +1,6 @@
-package connectfour;
+package connectfour.gui;
+
+import connectfour.assets.Board;
 
 public class TxtGUI {
 

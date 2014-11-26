@@ -1,4 +1,5 @@
-package connectfour;
+package connectfour.assets;
+
 
 public class Board {
 

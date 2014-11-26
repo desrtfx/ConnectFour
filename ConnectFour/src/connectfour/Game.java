@@ -1,5 +1,8 @@
 package connectfour;
 
+import connectfour.assets.Board;
+import connectfour.assets.Player;
+
 public class Game {
 	
 	private Board board;

@@ -1,6 +1,8 @@
-package connectfour;
+package connectfour.strategy;
 
 import java.util.Random;
+
+import connectfour.assets.Board;
 
 public class RandomStrategy implements MoveStrategy {
 

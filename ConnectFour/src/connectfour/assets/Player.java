@@ -1,4 +1,6 @@
-package connectfour;
+package connectfour.assets;
+
+import connectfour.strategy.MoveStrategy;
 
 public class Player {
 	
