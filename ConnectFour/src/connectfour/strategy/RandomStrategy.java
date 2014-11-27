@@ -10,7 +10,7 @@ public class RandomStrategy implements MoveStrategy {
 	Random rnd = new Random();
 	
 	@Override
-	public int makeMove(Player player, Board board) {
+	public int makeMove(Player current, Player other, Board board) {
 		int col;
 		do {
 			col = rnd.nextInt(board.getCols());

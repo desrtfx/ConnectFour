@@ -6,7 +6,7 @@ import connectfour.assets.Player;
 public class HumanStrategy implements MoveStrategy {
 
 	@Override
-	public int makeMove(Player player, Board board) {
+	public int makeMove(Player current, Player other, Board board) {
 		
 		// TODO Human Player move strategy
 		return 0;

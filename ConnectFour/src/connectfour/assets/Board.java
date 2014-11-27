@@ -90,4 +90,16 @@ public class Board {
 		return (board[rows-1][col]==0);
 	}
 
+	/**
+	 * 
+	 */
+	public void init() {
+		for(int row = 0; row<rows;row++) {
+			for(int col = 0; col<cols; col++) {
+				board[row][col] = 0;
+			}
+		}
+		
+	}
+
 }
