@@ -89,14 +89,14 @@ public class Game {
 				board.dropChip(activePlayer + 1, move);
 
 				// Don't bother checking if less than 7 chips on the board
-				if (board.getChipCount() >= 7) {
-					
+				if (board.getChipCount() > 6) {
+
 					// Check for winning conditions
 					if ((board.isFull()) && (winner == NO_WINNER)) {
 						winner = GAME_TIED;
 					}
 
-					if (board.checkBoard(activePlayer-1, winCond)) {
+					if (board.checkBoard(activePlayer + 1, winCond)) {
 						winner = activePlayer;
 					}
 				}

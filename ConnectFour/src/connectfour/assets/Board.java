@@ -95,7 +95,7 @@ public class Board {
 	public int getRows() {
 		return rows;
 	}
-	
+
 	// returns the chipCount to speed winner analysis
 	public int getChipCount() {
 		return chipCount;
@@ -117,6 +117,7 @@ public class Board {
 		for (int i = 0; i < rows; i++) {
 			if (board[i][col] == 0) {
 				board[i][col] = player;
+				chipCount++;
 				break;
 			}
 		}
@@ -142,18 +143,19 @@ public class Board {
 		chipCount = 0;
 	}
 
-	private boolean checkGroup(int player, int startRow, int startCol, int offsRow, int offsCol, int winCond) {
-		for(int i = 0; i < winCond; i++ ) {
+	private boolean checkGroup(int player, int startRow, int startCol,
+			int offsRow, int offsCol, int winCond) {
+		for (int i = 0; i < winCond; i++) {
 			if (board[startRow + offsRow * i][startCol + offsCol * i] != player) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	private boolean checkHoriz(int player, int winCond) {
-		for(int row = 0; row < rows; row++) {
-			for(int col = 0; col < cols-winCond; col++) {
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < cols - winCond; col++) {
 				if (checkGroup(player, row, col, 0, 1, winCond)) {
 					return true;
 				}
@@ -161,10 +163,10 @@ public class Board {
 		}
 		return false;
 	}
-	
+
 	private boolean checkVert(int player, int winCond) {
-		for(int row = 0; row < rows-winCond; row++) {
-			for(int col = 0; col < cols; col++) {
+		for (int row = 0; row < rows - winCond; row++) {
+			for (int col = 0; col < cols; col++) {
 				if (checkGroup(player, row, col, 1, 0, winCond)) {
 					return true;
 				}
@@ -172,33 +174,33 @@ public class Board {
 		}
 		return false;
 	}
-	
+
 	private boolean checkBLTR(int player, int winCond) {
-		for(int row = 0; row < rows-winCond; row++) {
-			for(int col = 0; col < cols-winCond; col++) {
+		for (int row = 0; row < rows - winCond; row++) {
+			for (int col = 0; col < cols - winCond; col++) {
 				if (checkGroup(player, row, col, 1, 1, winCond)) {
 					return true;
 				}
 			}
 		}
-		return false;		
+		return false;
 	}
 
 	private boolean checkTLBR(int player, int winCond) {
-		for(int row = winCond-1; row < rows; row++) {
-			for(int col = 0; col < cols-winCond; col++) {
+		for (int row = winCond - 1; row < rows; row++) {
+			for (int col = 0; col < cols - winCond; col++) {
 				if (checkGroup(player, row, col, 1, -1, winCond)) {
 					return true;
 				}
 			}
 		}
-		return false;		
+		return false;
 	}
 
 	public boolean checkBoard(int player, int winCond) {
 		// There need to be at least 7 chips on the board
 		// before there can be a winner
-		if (chipCount < 7) { 
+		if (chipCount < 7) {
 			return false;
 		}
 		// Horizontal "-"
