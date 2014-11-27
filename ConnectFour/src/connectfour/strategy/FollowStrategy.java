@@ -4,6 +4,7 @@ import java.util.Random;
 
 import connectfour.assets.Board;
 import connectfour.assets.Player;
+import connectfour.gui.TxtGUI;
 
 public class FollowStrategy implements MoveStrategy {
 
@@ -11,7 +12,7 @@ public class FollowStrategy implements MoveStrategy {
 
 	// Computer will never quit!
 	@Override
-	public int makeMove(Player current, Player other, Board board) {
+	public int makeMove(Player current, Player other, Board board, TxtGUI gui) {
 		int col = other.getLastCol();
 
 		if ((col == -1) || (!board.isValid(col))) {

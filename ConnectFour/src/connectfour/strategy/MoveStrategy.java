@@ -2,6 +2,7 @@ package connectfour.strategy;
 
 import connectfour.assets.Board;
 import connectfour.assets.Player;
+import connectfour.gui.TxtGUI;
 
 public interface MoveStrategy {
 
@@ -12,6 +13,6 @@ public interface MoveStrategy {
 	 * @return a valid column number where the next chip should go
 	 * or -1 to quit the game
 	 */
-	public int makeMove(Player current, Player other, Board board);
+	public int makeMove(Player current, Player other, Board board, TxtGUI gui);
 	
 }

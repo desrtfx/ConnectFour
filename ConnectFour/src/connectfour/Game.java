@@ -38,8 +38,8 @@ public class Game {
 		gui = new TxtGUI(board);
 		this.winCond = 4;
 		players = new Player[2];
-		players[0] = new Player(1, new HumanStrategy());
-		players[1] = new Player(2, new HumanStrategy());
+		players[0] = new Player(1, new HumanStrategy(), gui);
+		players[1] = new Player(2, new HumanStrategy(), gui);
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class Game {
 
 			if (move != MOVE_QUIT) {
 				// Execute the move on the board
-				board.dropChip(activePlayer, move);
+				board.dropChip(activePlayer + 1, move);
 
 				// Don't bother checking if less than 7 chips on the board
 				if (board.getChipCount() >= 7) {
@@ -96,7 +96,7 @@ public class Game {
 						winner = GAME_TIED;
 					}
 
-					if (board.checkBoard(activePlayer, winCond)) {
+					if (board.checkBoard(activePlayer-1, winCond)) {
 						winner = activePlayer;
 					}
 				}
