@@ -15,6 +15,7 @@ public class Game {
 	private static final int WINNER_PLAYER_1 = 0;
 	private static final int WINNER_PLAYER_2 = 1;
 	private static final int GAME_TIED = 2;
+	private static final int MOVE_QUIT = -1;
 
 	// Game variables
 	private Board board;
@@ -83,15 +84,25 @@ public class Game {
 			move = players[activePlayer].makeMove(players[activePlayer],
 					players[1 - activePlayer], board);
 
-			// Execute the move on the board
-			board.dropChip(activePlayer, move);
+			if (move != MOVE_QUIT) {
+				// Execute the move on the board
+				board.dropChip(activePlayer, move);
 
-			// TODO: Check for winning conditions
-			if ((board.isFull()) && (winner == NO_WINNER)) {
-				winner = GAME_TIED;
+				// Don't bother checking if less than 7 chips on the board
+				if (board.getChipCount() >= 7) {
+					
+					// Check for winning conditions
+					if ((board.isFull()) && (winner == NO_WINNER)) {
+						winner = GAME_TIED;
+					}
+
+					if (board.checkBoard(activePlayer, winCond)) {
+						winner = activePlayer;
+					}
+				}
+			} else {
+				winner = QUIT;
 			}
-			// Other conditions here
-
 			// next player
 			activePlayer = 1 - activePlayer;
 
@@ -104,7 +115,7 @@ public class Game {
 
 		switch (winner) {
 		case QUIT:
-			// TODO: display game tied message
+			// TODO: display quit message
 			break;
 		case NO_WINNER:
 			// Should not be reached, only here for completeness

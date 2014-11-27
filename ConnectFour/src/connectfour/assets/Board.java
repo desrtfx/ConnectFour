@@ -142,4 +142,81 @@ public class Board {
 		chipCount = 0;
 	}
 
+	private boolean checkGroup(int player, int startRow, int startCol, int offsRow, int offsCol, int winCond) {
+		for(int i = 0; i < winCond; i++ ) {
+			if (board[startRow + offsRow * i][startCol + offsCol * i] != player) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean checkHoriz(int player, int winCond) {
+		for(int row = 0; row < rows; row++) {
+			for(int col = 0; col < cols-winCond; col++) {
+				if (checkGroup(player, row, col, 0, 1, winCond)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkVert(int player, int winCond) {
+		for(int row = 0; row < rows-winCond; row++) {
+			for(int col = 0; col < cols; col++) {
+				if (checkGroup(player, row, col, 1, 0, winCond)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkBLTR(int player, int winCond) {
+		for(int row = 0; row < rows-winCond; row++) {
+			for(int col = 0; col < cols-winCond; col++) {
+				if (checkGroup(player, row, col, 1, 1, winCond)) {
+					return true;
+				}
+			}
+		}
+		return false;		
+	}
+
+	private boolean checkTLBR(int player, int winCond) {
+		for(int row = winCond-1; row < rows; row++) {
+			for(int col = 0; col < cols-winCond; col++) {
+				if (checkGroup(player, row, col, 1, -1, winCond)) {
+					return true;
+				}
+			}
+		}
+		return false;		
+	}
+
+	public boolean checkBoard(int player, int winCond) {
+		// There need to be at least 7 chips on the board
+		// before there can be a winner
+		if (chipCount < 7) { 
+			return false;
+		}
+		// Horizontal "-"
+		if (checkHoriz(player, winCond)) {
+			return true;
+		}
+		// Vertical "|"
+		if (checkVert(player, winCond)) {
+			return true;
+		}
+		// Diagonal bottom left to top right "/"
+		if (checkBLTR(player, winCond)) {
+			return true;
+		}
+		// Diagonal top left to bottom right "\"
+		if (checkTLBR(player, winCond)) {
+			return true;
+		}
+		return false;
+	}
 }

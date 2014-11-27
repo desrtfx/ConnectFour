@@ -9,6 +9,7 @@ public class FollowStrategy implements MoveStrategy {
 
 	private Random rnd;
 
+	// Computer will never quit!
 	@Override
 	public int makeMove(Player current, Player other, Board board) {
 		int col = other.getLastCol();

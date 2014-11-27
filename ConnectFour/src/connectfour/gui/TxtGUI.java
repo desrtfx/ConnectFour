@@ -10,6 +10,10 @@ public class TxtGUI {
 		this.board = board;
 	}
 	
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+	
 	private void drawBoardHeader() {
 		for(int col = 0; col < board.getCols(); col++) {
 			if (col==0) {

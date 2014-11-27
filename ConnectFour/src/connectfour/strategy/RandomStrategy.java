@@ -9,6 +9,7 @@ public class RandomStrategy implements MoveStrategy {
 
 	Random rnd = new Random();
 	
+	// Computer will never quit!
 	@Override
 	public int makeMove(Player current, Player other, Board board) {
 		int col;
